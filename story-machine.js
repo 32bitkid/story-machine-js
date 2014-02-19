@@ -116,8 +116,8 @@ var storyMachine = (function() {
           if(!has(name)) return;
           
           var next = render(name);
-          next.classList.add("new"); 
           next.classList.add("current");
+          next.classList.add("new"); 
           // force layout
           var top = next.offsetTop; 
           next.classList.remove("new");
