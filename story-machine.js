@@ -128,8 +128,9 @@ var storyMachine = (function() {
           node.classList.remove("current");
           
           var root = document.documentElement || document.body;
-          top = Math.max(root.clientHeight - next.offsetHeight,0)
           
+          top = Math.min(top,root.offsetHeight- root.clientHeight)
+
           mator(options.speed || 750, mator.easing.quad.both) 
             .update(mator.with(root, "scrollTop"), root.scrollTop, top)
             .start();
