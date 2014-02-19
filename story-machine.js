@@ -128,7 +128,9 @@ var storyMachine = (function() {
           node.classList.remove("current");
           
           var root = document.documentElement || document.body;
-          mator(500, mator.easing.quad.both) 
+          top = Math.max(root.clientHeight - next.offsetHeight,0)
+          
+          mator(options.speed || 750, mator.easing.quad.both) 
             .update(mator.with(root, "scrollTop"), root.scrollTop, top)
             .start();
           return;
