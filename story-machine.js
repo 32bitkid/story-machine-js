@@ -97,8 +97,7 @@ var storyMachine = (function() {
       call = Function.prototype.call,
       slice = call.bind(Array.prototype.slice);
   
-  return function storyMachine(target, cache) {
-    
+  return function storyMachine(options) {
     var handleClick = function(e) {
       var elem = e.target, node = e.currentTarget;
       
@@ -137,10 +136,10 @@ var storyMachine = (function() {
       } while(elem=elem.parentElement);
     };
     
-    cache = cache || {};
     
-    var typeHandlers = {};
-    
+    var target = options.target;
+    var cache = {};
+    var typeHandlers = {};    
     var tagHandlers = {
       "DIV": function(element) {
         var name = element.getAttribute("id"),
@@ -171,7 +170,7 @@ var storyMachine = (function() {
           target.appendChild(node);
           return node;
         },
-        addElems = function(nodeList) {
+        addElements = function(nodeList) {
           var i,l,element, handler;
            
           for(var i=0,l=nodeList.length;i<l;i++) {
@@ -182,6 +181,14 @@ var storyMachine = (function() {
           }
         };
     
-    return { add: add, render: render, addElements: addElems, registerType: registerType };
+    if(options && options.register) {
+      for(var key in options.register) {
+        registerType(key, options.register[key]);
+      }
+    }
+    
+    if(options && options.elements) addElements(options.elements);
+    
+    return { add: add, render: render, addElements: addElements, registerType: registerType };
   };
 }());
