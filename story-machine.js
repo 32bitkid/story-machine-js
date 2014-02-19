@@ -93,8 +93,7 @@ var storyMachine = (function() {
     return fn;
   }());  
   
-  var md = new Markdown.Converter(),
-      bind = Function.prototype.bind, 
+  var bind = Function.prototype.bind,
       call = Function.prototype.call,
       slice = call.bind(Array.prototype.slice);
   
@@ -150,21 +149,18 @@ var storyMachine = (function() {
       },
       "SCRIPT": function(element) {
         var name = element.getAttribute("id"),
-            content = (element.innerText || element.textContent);
+            content = (element.innerText || element.textContent),
+            handler = typeHandlers[element.getAttribute("type")];
 
-        switch(element.getAttribute("type")) {
-          case "text/x-markdown":
-            content = md.makeHtml(content)
-            break;
-        }
+        if(handler) content = handler(content);
         add(name, content);
       }
     }
-      
+
     var has = function(name) { return !!cache[name]; },
         add = function(name, content) { cache[name] = content; },
         registerType = function(mime, fn) {
-          
+          typeHandlers[mime] = fn;
         },
         render = function(name) {
           var content = cache[name];
