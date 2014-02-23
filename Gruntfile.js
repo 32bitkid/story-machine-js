@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   
   // Project configuration.
   grunt.initConfig({
@@ -9,6 +10,9 @@ module.exports = function(grunt) {
           'story-machine-min.js': ['story-machine.js']
         }
       }
+    },
+    jshint: {
+      all: ["story-machine.js"]
     }
   });
 };
