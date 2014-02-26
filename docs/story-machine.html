@@ -30,7 +30,10 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* jshint strict: true, undef: true, unused: true */</span>
+<span class="hljs-comment">/* global document, module, exports: true */</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+<span class="hljs-pi">  "use strict"</span>;</pre></div></div>
             
         </li>
         
@@ -41,12 +44,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Quick-references to Function methods.</p>
+              <p>Quick-references to call.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> bind = <span class="hljs-built_in">Function</span>.prototype.bind,
-      call = <span class="hljs-built_in">Function</span>.prototype.call,</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> call = <span class="hljs-built_in">Function</span>.prototype.call,</pre></div></div>
             
         </li>
         
@@ -438,7 +440,9 @@ property of the newly generated element.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> forceLayout = next.offsetTop;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-comment">/* jshint -W030 */</span>
+      next.offsetTop;
+      <span class="hljs-comment">/* jshint +W030 */</span></pre></div></div>
             
         </li>
         
