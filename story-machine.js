@@ -1,8 +1,10 @@
+/* jshint strict: true, undef: true, unused: true */
+/* global document, module, exports: true */
 (function() {
+  "use strict";  
   
-  // Quick-references to Function methods.
-  var bind = Function.prototype.bind,
-      call = Function.prototype.call,
+  // Quick-references to call.
+  var call = Function.prototype.call,
       // Bind a callable version of slice.
       slice = call.bind(Array.prototype.slice),
       
@@ -117,7 +119,9 @@
       next.classList.add("new");
       // Force the browser to perform a layout by reading the `offsetTop`
       // property of the newly generated element.
-      var forceLayout = next.offsetTop; 
+      /* jshint -W030 */
+      next.offsetTop;
+      /* jshint +W030 */
       
       // Then, immediately remove the `new` class. This
       // allows clients to perform class based CSS
